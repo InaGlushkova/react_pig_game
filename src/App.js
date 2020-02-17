@@ -22,7 +22,7 @@ class App extends Component {
   }
   
   newGameHanlder = () => {
-    this.setState({ initState });
+    this.setState({ ...initState });
   }
 
   rollDiceHanlder = () => {
@@ -90,20 +90,8 @@ class App extends Component {
   render() {
     return (
         <div className="wrapper clearfix">
-          <Player 
-            name={this.state.players[0].name}
-            score={this.state.players[0].score}
-            currScore={this.state.players[0].currentScore}
-            active={this.state.players[0].active}
-            winner={this.state.players[0].winner}>
-          </Player>
-          <Player 
-            name={this.state.players[1].name}
-            score={this.state.players[1].score}
-            currScore={this.state.players[1].currentScore}
-            active={this.state.players[1].active}
-            winner={this.state.players[1].winner}>
-          </Player>
+          <Player {...this.state.players[0]} />
+          <Player {...this.state.players[1]} />
           <button className="btn-new" onClick={this.newGameHanlder}>
             <i className="ion-ios-plus-outline"></i>New game
           </button>
